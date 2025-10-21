@@ -1,0 +1,17 @@
+---
+import '../scss/mainCard.scss';
+
+const {title, secondInfo, gifSrc} = Astro.props
+
+---
+
+<article class="main_card_article">
+    <div class="left_main_card_elements">
+        <h2>{title}</h2>
+        <slot name="info" />
+        <p>{secondInfo}</p>
+    </div>
+    <div class="right_main_card_elements">
+        <img src={gifSrc} alt="gif" />
+    </div>
+</article>
