@@ -1,10 +1,7 @@
-import { FC, useRef, useState } from 'react';
-import './Main.scss';
-import MainCard from './MainCard/MainCard';
-import styled from 'styled-components';
-import PriceCard from './PriceCard/PriceCard';
-import useScreenSize from '../../detectScreenSize';
-import { Link } from 'react-router-dom';
+import { useRef, useState, type FC } from 'react';
+import '../../../scss/Main.scss';
+// import MainCard from './MainCard/MainCard';
+// import PriceCard from './PriceCard/PriceCard';
 
 const Prices = styled.div`
     width: 100%;
@@ -12,7 +9,7 @@ const Prices = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: ${({ theme }) => theme.bgSecond};
+    background-color: var(--bg-second);
 
     @media screen and (max-width: 770px) {
         & {
@@ -37,7 +34,7 @@ const HeaderInfo = styled.div`
         font-size: 5.6rem;
         margin: 0;
         span {
-            color: ${({ theme }) => theme.accent};
+            color: var(--accent);
         }
     }
 
@@ -46,7 +43,7 @@ const HeaderInfo = styled.div`
         font-weight: 500;
         font-size: 2.4rem;
         text-align: center;
-        color: ${({ theme }) => theme.textSecond};
+        color: var(--accent);
     }
 
     @media screen and (max-width: 770px) {
@@ -79,7 +76,7 @@ const HeaderInfo = styled.div`
 export const PeerCircle = styled.div<{ $size: 'big' | 'small' }>`
     width: ${({ $size }) => ($size === 'big' ? '100px' : '75px')};
     height: ${({ $size }) => ($size === 'big' ? '100px' : '75px')};
-    border: 1px solid ${({ theme }) => theme.accent};
+    border: 1px solid var(--accent);
     border-radius: 100%;
     display: flex;
     justify-content: center;
@@ -136,7 +133,7 @@ const CompareButton = styled.button`
     display: flex;
     gap: 6px;
     border-radius: 6px;
-    border: 1px solid ${({ theme }) => theme.accent};
+    border: 1px solid var(--accent);
     align-items: center;
     background-color: transparent;
 
@@ -153,7 +150,7 @@ const CompareButton = styled.button`
     transition: 0.3s ease all;
     @media (hover:hover) {
         &:hover {
-            background-color: ${({theme}) => theme.accent}       
+            background-color: var(--accent)      
         }
     }
 `;
@@ -161,13 +158,13 @@ const CompareButton = styled.button`
 export const StyledButton = styled.button<{ $fill: boolean }>`
     height: 50px;
     width: 190px;
-    background-color: ${({ theme, $fill }) => ($fill ? theme.accent : theme.bgMain)};
+    background-color: ${({ theme, $fill }) => ($fill ? 'var(--accent)' : 'var(--bg-main)')};
     font-family: 'Figtree';
     font-weight: 600;
     font-size: 2rem;
     border-radius: 100px;
-    color: ${({ theme, $fill }) => ($fill ? theme.bgMain : theme.accent)};
-    border: ${({ theme, $fill }) => ($fill ? '' : '1px solid ' + theme.accent)};
+    color: ${({ theme, $fill }) => ($fill ? 'var(--bg-main)' : 'var(--accent)')};
+    border: ${({ theme, $fill }) => ($fill ? '' : '1px solid ' + 'var(--accent)')};
 `;
 
 const HeaderInfoWrapper = styled.div`
@@ -176,7 +173,7 @@ const HeaderInfoWrapper = styled.div`
     justify-content: center;
     align-items: center;
     height: 744px;
-    border-bottom: 1px solid ${({ theme }) => theme.bgSecond};
+    border-bottom: 1px solid var(--bg-second);
 
     @media screen and (max-width: 770px) {
         & {
@@ -351,7 +348,6 @@ const PriceSection: FC<{ withSlider?: boolean }> = ({ withSlider }) => {
 };
 
 const Main: FC = () => {
-    const { width } = useScreenSize();
 
     return (
         <main>
@@ -420,17 +416,15 @@ const Main: FC = () => {
                     <h3>Grow confidently with predictable pricing</h3>
                     <CompareWrapper>
                         <span>COMPARE</span>
-                        <Link to={'/calculator'}>
-                            <CompareButton>
-                                <img
-                                    src={`${process.env.PUBLIC_URL}/icons/calculator.svg`}
-                                    alt="calculator icon"
-                                />
-                                <span>Calculator</span>
-                            </CompareButton>
-                        </Link>
+                        <CompareButton>
+                            <img
+                                src={`${process.env.PUBLIC_URL}/icons/calculator.svg`}
+                                alt="calculator icon"
+                            />
+                            <span>Calculator</span>
+                        </CompareButton>
                     </CompareWrapper>
-                    {width >= 670 ? <PriceSection /> : <PriceSection withSlider />}
+                    {/* {width >= 670 ? <PriceSection /> : <PriceSection withSlider />} */}
                     
                 </div>
             </Prices>
