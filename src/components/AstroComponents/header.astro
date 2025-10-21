@@ -1,0 +1,22 @@
+---
+import styles from '../../scss/Header.module.scss';
+---
+
+<header class={styles.header}>
+    <div class={styles.headerLine}>
+        <nav class={styles.nav}>
+            <img src='/icons/peer_black.svg' alt="peer icon" class={styles.logo} />
+            <button class={styles.navBtn}>About</button>
+            <button class={styles.navBtn}>Discord</button>
+            <button class={styles.navBtn}>Github</button>
+        </nav>
+        <div class={styles.auth}>
+            <img src="/icons/person.svg" alt="person icon" class={styles.authIcon} />
+            <div class={styles.authLinks}>
+                <a href="#" class={styles.authLink}>Sign in</a>
+                <span class={styles.authSeparator}>/</span>
+                <a href="#" class={styles.authLink}>Sign up</a>
+            </div>
+        </div>
+    </div>
+</header>
