@@ -65,8 +65,20 @@
 
 .price_cards_wrapper {
     display: flex;
+    transition: 0.15s ease all;
 }
 
+.price_slider {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.price_slider_window {
+    width: 300px;
+    overflow: hidden;
+}
 
 @media screen and (max-width: 1240px) {
     .price_cards_wrapper {
@@ -75,6 +87,21 @@
         grid-template-rows: repeat(2, 1fr);
         gap: 20px;
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .price_cards_wrapper {
+        display: flex;
+        gap: 50px;
+    }
+
+    .desktop {
+        display: none;
+    }
+
+    .price_slider {
+        display: flex;
     }
 }
 

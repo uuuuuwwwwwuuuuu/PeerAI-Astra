@@ -17,7 +17,7 @@ import PriceCard from '../PriceCard/PriceCard.astro';
                 <span>Calculator</span>
             </button>
         </div>
-        <div class="price_cards_wrapper">
+        <section class="price_cards_wrapper desktop">
             {
                 priceData.map(priceCard => {
                     return <PriceCard 
@@ -28,6 +28,68 @@ import PriceCard from '../PriceCard/PriceCard.astro';
                     />
                 })
             }
+        </section>
+        <div class="price_slider">
+            <div class="price_slider_window">
+                <section class="price_cards_wrapper">
+                    {priceData.map(priceCardData => {
+                        return (
+                            <PriceCard
+                                title={priceCardData.title}
+                                info={priceCardData.info}
+                                price={priceCardData.price}
+                                options={priceCardData.options}
+                            />
+                        );
+                    })}
+                </section>
+            </div>
         </div>
     </div>
 </div>
+<script>
+import { priceData } from "../../assets/priceCards";
+
+    let startX = 0;
+    let diffX = 0;
+    let currentSlideIndex = 0;
+
+    const priceSlider: HTMLDivElement | null = document.querySelector('.price_slider');
+    const priceWrapper = document.querySelectorAll('.price_cards_wrapper')[1] as HTMLDivElement | null
+
+    if (priceSlider && priceWrapper) {
+        priceSlider.addEventListener('touchstart', (event: TouchEvent) => {
+            startX = event.touches[0].clientX;
+        });
+
+        priceSlider.addEventListener('touchmove', (event: TouchEvent) => {
+            diffX = event.touches[0].clientX - startX;
+            const translateValue = currentSlideIndex * 350 - diffX
+
+            priceWrapper.style.transform = `translate(${-translateValue}px)`;
+        });
+
+        priceSlider.addEventListener('touchend', (event: TouchEvent) => {
+            if (diffX <= -100) {
+                if (currentSlideIndex >= priceData.length - 1) {
+                    priceWrapper.style.transform = `translate(${currentSlideIndex * -350}px)`;
+                } else {
+                    currentSlideIndex++;
+                    priceWrapper.style.transform = `translate(${currentSlideIndex * -350}px)`;
+                }
+            } else if (diffX >= 100) {
+                if (currentSlideIndex <= 0) {
+                    priceWrapper.style.transform = `translate(${currentSlideIndex * -350}px)`;
+                } else {
+                    currentSlideIndex--;
+                    priceWrapper.style.transform = `translate(${currentSlideIndex * -350}px)`;
+                }
+            } else {
+                priceWrapper.style.transform = `translate(${currentSlideIndex * -350}px)`;
+            }
+        })
+    }
+
+
+
+</script>
