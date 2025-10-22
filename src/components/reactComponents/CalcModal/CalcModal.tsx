@@ -8,7 +8,7 @@ const ModalWindow = styled.div`
     max-width: 1024px;
     width: 100%;
     height: 600px;
-    background-color: var(--);
+    background-color: var(--bg-main);
     border-radius: 10px;
     top: 50%;
     left: 50%;
@@ -138,22 +138,7 @@ const MainLeftElements = styled.div`
 `;
 
 const ProgressWrapper = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-
-    @media screen and (max-width: 870px) {
-        & {
-            gap: 10px;
-        }
-
-        & > div {
-            height: 75px;
-            border-radius: 10px;
-            padding: 10px 30px;
-        }
-    }
+    
 `;
 
 const MainRightElements = styled.section`
@@ -283,7 +268,6 @@ const CalcModal = () => {
         }
     }, [MAUsValue, buildsValue, minsValue])
 
-    const navigate = useNavigate();
 
     return (
         <ModalWindow>
@@ -292,7 +276,7 @@ const CalcModal = () => {
                     <img src={`${process.env.PUBLIC_URL}/icons/calculator.svg`} alt="calculator icon" />
                     <span>Usage plan calculator</span>
                 </HeaderLeftElements>
-                <button onClick={() => navigate(-1)}>
+                <button >
                     <img src={`${process.env.PUBLIC_URL}/icons/cross.svg`} alt="cross" />
                 </button>
             </ModalHeader>

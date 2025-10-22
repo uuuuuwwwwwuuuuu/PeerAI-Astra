@@ -1,0 +1,45 @@
+---
+import './CalcModal.scss';
+import CalcModalProgress from './CalcModalProgress/CalcModalProgress.astro';
+
+---
+
+<div class="calculator_window ">
+    <div class="calculator_header">
+        <div class="calculator_header_left_elements">
+            <img src='/icons/calculator.svg' alt="calculator icon" />
+            <span>Usage plan calculator</span>
+        </div>
+        <button class="calculator_close_btn">
+            <img src='/icons/cross.svg' alt="cross" />
+        </button>
+    </div>
+    <div class="calculator_main">
+        <div class="calculator_main_left_elements">
+            <div class="calculator_progress_wrapper">
+                <CalcModalProgress
+                    unitType='MAUs'
+                    title='Monthly Active Users'/>
+                <CalcModalProgress
+                    unitType='builds'
+                    title='Builds'/>
+                <CalcModalProgress
+                    unitType='mins'
+                    title='Workflows CI/CD minutes'/>
+            </div>
+            <div class="calculator_text_wrapper">
+                <p>Expecting over 1,000,000 MAU? <span>Contact us</span> for a more accurate estimate</p>
+                <div class="calculator_info">
+                    <span>*</span>
+                    <p>Your bill may vary from the estimated extra usage based on your specific
+                        usage. Estimates are based on average MAU, build, and CI/CD minute costs.
+                        Extra usage is charged when exceeding the resource allotment included in the
+                        subscription plan.</p>
+                </div>
+            </div>
+        </div>
+        <div class="calculator_main_right_elements">
+            <!-- {renderPriceCard(currentPlan)} -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,190 @@
+
+.calculator_window {
+    position: fixed;
+    max-width: 1024px;
+    width: 100%;
+    height: 600px;
+    background-color: var(--bg-main);
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    margin-top: -300px;
+    margin-left: -512px;
+    z-index: 5;
+    transition: 0.5s ease all;
+}
+
+.calculator_header {
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #EEEEEE;
+    background-color: var(--bg-main);
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+
+    button {
+        background-color: transparent;
+    }
+}
+
+.calculator_header_left_elements {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    span {
+        font-family: JetBrains Mono;
+        font-weight: 700;
+        font-size: 2rem;
+        text-transform: uppercase;
+        color: var(--text);
+    }
+    
+    img {
+        height: 100%;
+    }
+}
+
+.calculator_main {
+    padding: 16px 25px 25px 25px;
+    height: calc(100% - 70px);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.calculator_main_left_elements {
+    width: 100%;
+    height: 100%;
+    flex: 0 1 447px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    p {
+        text-align: start;
+        font-weight: 400;
+        font-size: 12px;
+    }
+}
+
+.calculator_progress_wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.calculator_main_right_elements {
+    max-width: 447px;
+    width: 100%;
+
+    article {
+        border-radius: 16px;
+        border-color: #E0E1E6;
+    }
+}
+
+.calculator_info {
+    display: flex;
+}
+
+.calculator_text_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    span {
+        margin-right: 5px;
+    }
+}
+
+.disable {
+    display: none;
+}
+
+@media screen and (max-width: 1120px) {
+    .calculator_window {
+        max-width: 800px;
+        margin-left: -400px;
+        section {
+            width: 350px;
+        }
+    }
+
+    .calculator_main {
+        gap: 30px;
+    }
+
+    .calculator_main_left_elements {
+        flex-basis: 300px;
+        flex-grow: 1;
+    }
+}
+
+@media screen and (max-width: 870px) {
+    .calculator_window {
+        width: 680px;
+        margin-left: -340px;
+    }
+
+    .calculator_main {
+        flex-direction: column-reverse;
+        gap: 20px;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .calculator_progress_wrapper {
+        gap: 10px;
+    }
+
+    .calculator_progress_wrapper > div {
+        height: 75px;
+        border-radius: 10px;
+        padding: 10px 30px;
+    }
+
+    .calculator_main_right_elements {
+        article {
+            height: max-content;
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .calculator_window {
+        width: 380px;
+        margin-left: -190px;
+    }
+
+    .calculator_main {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .calculator_window {
+        width: 270px;
+        margin-left: -135px;
+    }
+
+    .calculator_header_left_elements {
+        span {
+            font-size: 1.8rem;
+            text-align: center;
+        }
+    }
+
+    .calculator_main_right_elements {
+        max-width: 250px;
+    }
+}
+
+@media screen and (max-width: 870px) {
+    .calculator_text_wrapper {
+        display: none;
+    }
+}
