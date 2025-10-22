@@ -1,9 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/header.astro';
-import HeaderInfo from '../components/headerInfo.astro';
-import MainCard from '../components/mainCard.astro';
-import PricesBlock from '../components/pricesBlock.astro';
+import Header from '../components/Header/Header.astro';
+import HeaderInfo from '../components/HeaderInfo/HeaderInfo.astro';
+import MainCard from '../components/MainCard/MainCard.astro';
+import PricesBlock from '../components/PricesBlock/PricesBlock.astro';
+import Footer from '../components/Footer/Footer.astro';
 
 import '../scss/index.scss';
 
@@ -13,38 +14,39 @@ import '../scss/index.scss';
 	<Header />
 	<main>
 		<HeaderInfo />
-		<section class="main_container">
-			<MainCard 
-				title="No more switching between files."
-				secondInfo="This also works for folders, docs, terminal content, codebase, and more 😈"
-				gifSrc="/img/first_main_card.gif"
-			>
-				<p slot="info">
-					To add missing context: directly reference code by including other files
-                    in the chat by adding <b>@filename</b>.
-				</p>
-			</MainCard>
-			<MainCard 
-				title="No more tedious changes, or forgetting language syntax."
-				secondInfo="Here, we ask Pear to help us handle edge cases 😏"
-				gifSrc="/img/second_main_card.gif"
-			>
-				<p slot="info">
-					Directly make changes inline by pressing CMD+I (ALT+L on Windows), and
-					choose what you want to keep.
-				</p>
-			</MainCard>
-			<MainCard 
-				title="No more tiresome copy pasting."
-				secondInfo="Prompt it right away 😎"
-				gifSrc="/img/third_main_card.gif"
-			>
-				<p slot="info">
-					Directly bring your code to the chat by selecting it and pressing CMD+L
-					(ALT+L on Windows).
-				</p>
-			</MainCard>
-		</section>
+			<section class="main_container">
+				<MainCard 
+					title="No more switching between files."
+					secondInfo="This also works for folders, docs, terminal content, codebase, and more 😈"
+					gifSrc="/img/first_main_card.gif"
+				>
+					<p slot="info">
+						To add missing context: directly reference code by including other files
+						in the chat by adding <b>@filename</b>.
+					</p>
+				</MainCard>
+				<MainCard 
+					title="No more tedious changes, or forgetting language syntax."
+					secondInfo="Here, we ask Pear to help us handle edge cases 😏"
+					gifSrc="/img/second_main_card.gif"
+				>
+					<p slot="info">
+						Directly make changes inline by pressing CMD+I (ALT+L on Windows), and
+						choose what you want to keep.
+					</p>
+				</MainCard>
+				<MainCard 
+					title="No more tiresome copy pasting."
+					secondInfo="Prompt it right away 😎"
+					gifSrc="/img/third_main_card.gif"
+				>
+					<p slot="info">
+						Directly bring your code to the chat by selecting it and pressing CMD+L
+						(ALT+L on Windows).
+					</p>
+				</MainCard>
+			</section>
 		<PricesBlock />
 	</main>
+	<Footer />
 </Layout>

@@ -1,15 +1,11 @@
 ---
-import '../scss/priceCard.scss';
+import './priceCard.scss';
 import { type CSSProperties } from 'react';
+import { type PriceCard } from '../../assets/priceCards.ts';
 
-export interface IPriceCard {
-    title: string;
-    info: string;
-    price: number;
-    options: readonly string[];
-}
+interface Props extends PriceCard {}
 
-const {title, info, price, options} = Astro.props as IPriceCard;
+const {title, info, price, options} = Astro.props;
 
 const pricePerMonthStyles: CSSProperties = {
     alignItems: price ? 'center' : 'flex-start'

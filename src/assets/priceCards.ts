@@ -1,4 +1,11 @@
-[
+export interface PriceCard {
+    title: string;
+    info: string;
+    price: number;
+    options: readonly string[];
+}
+
+export const priceData: PriceCard[] = [
     {
         "title": "Free",
         "info": "For solo developers working on a passion project.",
@@ -10,8 +17,6 @@
             "Submit to app stores",
             "Send updates to 1K MAUs"
         ],
-        "border": "left",
-        "size": "big"
     },
     {
         "title": "Starter",
@@ -23,8 +28,6 @@
             "Access to large workers",
             "Send updates to 3K MAUs"
         ],
-        "border": "none",
-        "size": "big"
     },
     {
         "title": "Production",
@@ -37,8 +40,6 @@
             "Priority support",
             "Single sign-on (SSO)"
         ],
-        "border": "none",
-        "size": "big"
     },
     {
         "title": "Enterprise",
@@ -50,7 +51,5 @@
             "Send updates to 1M MAUs",
             "Slack and strategic support add-on available"
         ],
-        "border": "right",
-        "size": "big"
     }
 ]
