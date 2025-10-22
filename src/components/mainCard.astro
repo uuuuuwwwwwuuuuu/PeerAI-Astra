@@ -1,7 +1,13 @@
 ---
 import '../scss/mainCard.scss';
 
-const {title, secondInfo, gifSrc} = Astro.props
+interface IProps {
+    title: string
+    secondInfo: string
+    gifSrc: string
+}
+
+const {title, secondInfo, gifSrc} = Astro.props as IProps
 
 ---
 

@@ -1,5 +1,12 @@
 ---
-import '../scss/prices.scss';
+import '../scss/pricesBlock.scss';
+
+import type { IPriceCard } from './priceCard.astro';
+import PriceCardsJson from '../assets/priceCards.json';
+
+import PriceCard from './priceCard.astro'
+
+const PriceCards: IPriceCard[] = PriceCardsJson
 ---
 
 <div class="prices">
@@ -12,7 +19,18 @@ import '../scss/prices.scss';
                 <span>Calculator</span>
             </button>
         </div>
-        {/* {width >= 670 ? <PriceSection /> : <PriceSection withSlider />} */}
+        <div class="price_cards_wrapper">
+            {
+                PriceCards.map(priceCard => {
+                    return <PriceCard 
+                        title={priceCard.title}
+                        info={priceCard.info}
+                        price={priceCard.price}
+                        options={priceCard.options}
+                    />
+                })
+            }
+        </div>
         
     </div>
 </div>
