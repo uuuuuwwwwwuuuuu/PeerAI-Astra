@@ -71,19 +71,17 @@ import { priceData } from "../../assets/priceCards";
 
         priceSlider.addEventListener('touchend', (event: TouchEvent) => {
             if (diffX <= -100) {
-                if (currentSlideIndex >= priceData.length - 1) {
-                    priceWrapper.style.transform = `translate(${currentSlideIndex * -350}px)`;
-                } else {
+                if (currentSlideIndex < priceData.length - 1) {
                     currentSlideIndex++;
-                    priceWrapper.style.transform = `translate(${currentSlideIndex * -350}px)`;
                 }
+
+                priceWrapper.style.transform = `translate(${currentSlideIndex * -350}px)`;
             } else if (diffX >= 100) {
-                if (currentSlideIndex <= 0) {
-                    priceWrapper.style.transform = `translate(${currentSlideIndex * -350}px)`;
-                } else {
+                if (currentSlideIndex > 0) {
                     currentSlideIndex--;
-                    priceWrapper.style.transform = `translate(${currentSlideIndex * -350}px)`;
                 }
+                
+                priceWrapper.style.transform = `translate(${currentSlideIndex * -350}px)`;
             } else {
                 priceWrapper.style.transform = `translate(${currentSlideIndex * -350}px)`;
             }
