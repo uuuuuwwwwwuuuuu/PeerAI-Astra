@@ -27,11 +27,10 @@ const {title, unitType} = Astro.props
 <script>
 const progressCircleList: NodeListOf<HTMLDivElement> = document.querySelectorAll('.progress_bar_circle');
 const progressBarBg: HTMLDivElement | null = document.querySelector('.bg_progress_bar');
-const progressTitle: HTMLSpanElement | null = document.querySelector('.progress_title');
 const progressValueSpanList = document.querySelectorAll('.progress_value');
 const progressBarList: NodeListOf<HTMLDivElement> = document.querySelectorAll('.progress_bar');
 
-type unitTypes =  "MAUs" | "builds" | 'mins'
+export type unitTypes =  "MAUs" | "builds" | 'mins'
 
 const convertWidthToPercents = (currentWidth: number, wrapperWidth: number) => {
     return +((currentWidth * 100) / wrapperWidth).toFixed(4);
@@ -103,6 +102,11 @@ const setProgressWidth = (unitType: unitTypes, progressWidth: number) => {
     }
 }
 
+export type ChangeProgressEvent = {
+    value: number,
+    unitType: unitTypes
+}
+
 const handleMouseMove = (event: MouseEvent) => {
     if (isMouseDown && progressBarBg) {
         const progressRect = progressBarBg.getBoundingClientRect();
@@ -127,6 +131,12 @@ const handleMouseMove = (event: MouseEvent) => {
         }
 
         setProgressValue(unitType, progressValue);
+        document.dispatchEvent(new CustomEvent<ChangeProgressEvent>('change-progress', {
+            detail: {
+                value: progressValue,
+                unitType: unitType
+            }
+        }))
     }
 }
 
@@ -155,6 +165,12 @@ const handleTouchMove = (event: TouchEvent) => {
         }
 
         setProgressValue(unitType, progressValue);
+        document.dispatchEvent(new CustomEvent('change-progress', {
+            detail: {
+                value: progressValue,
+                unitType: unitType
+            }
+        }))
     }
 }
 

@@ -1,7 +1,9 @@
 ---
 import './CalcModal.scss';
 import CalcModalProgress from './CalcModalProgress/CalcModalProgress.astro';
+import PriceCard from '../PriceCard/PriceCard.astro';
 
+import { priceData } from '../../assets/priceCards';
 ---
 
 <div class="calculator_window ">
@@ -39,7 +41,85 @@ import CalcModalProgress from './CalcModalProgress/CalcModalProgress.astro';
             </div>
         </div>
         <div class="calculator_main_right_elements">
-            <!-- {renderPriceCard(currentPlan)} -->
+            {
+                priceData.map(priceCard => {
+                    return <PriceCard 
+                        title={priceCard.title}
+                        info={priceCard.info}
+                        price={priceCard.price}
+                        options={priceCard.options}
+                        isModal
+                    />
+                })
+            }
         </div>
     </div>
 </div>
+
+<script>
+import type { ChangeProgressEvent } from "./CalcModalProgress/CalcModalProgress.astro.0.mts";
+import type { unitTypes } from "./CalcModalProgress/CalcModalProgress.astro.0.mts";
+
+const modalPriceCardList: NodeListOf<HTMLDivElement> = document.querySelectorAll('.modal_price');
+
+let MAUsValue = 0;
+let buildsValue = 0;
+let minsValue = 0;
+
+document.addEventListener('change-progress', (event: any ) => {
+    const detail = event.detail as ChangeProgressEvent;
+
+    switch (detail.unitType) {
+        case 'MAUs':
+            MAUsValue = detail.value;
+            break;
+        case 'builds':
+            buildsValue = detail.value;
+            break;
+        case 'mins':
+            minsValue = detail.value;
+            break;
+        }
+
+    
+    if (MAUsValue > 50000 || buildsValue > 225 || minsValue > 1000) {
+        modalPriceCardList.forEach((card, index) => {
+            if (index === 3) {
+                card.classList.remove('disable');
+            } else {
+                card.classList.add('disable');
+            }
+        })
+    } else if (MAUsValue > 3000 || buildsValue > 45 || minsValue > 350) {
+        modalPriceCardList.forEach((card, index) => {
+            if (index === 2) {
+                card.classList.remove('disable');
+            } else {
+                card.classList.add('disable');
+            }
+        })
+    } else if (MAUsValue > 1000 || buildsValue > 30 || minsValue > 60) {
+        modalPriceCardList.forEach((card, index) => {
+            if (index === 1) {
+                card.classList.remove('disable');
+            } else {
+                card.classList.add('disable');
+            }
+        })
+    } else {
+        modalPriceCardList.forEach((card, index) => {
+            if (index === 0) {
+                card.classList.remove('disable');
+            } else {
+                card.classList.add('disable');
+            }
+        })
+    }
+});
+
+modalPriceCardList.forEach((priceCard, index) => {
+    if (index === 0) return
+    priceCard.classList.add('disable');
+});
+
+</script>

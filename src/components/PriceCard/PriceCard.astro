@@ -3,9 +3,11 @@ import './priceCard.scss';
 import { type CSSProperties } from 'react';
 import { type PriceCard } from '../../assets/priceCards.ts';
 
-interface Props extends PriceCard {}
+interface Props extends PriceCard {
+    isModal?: boolean 
+}
 
-const {title, info, price, options} = Astro.props;
+const {title, info, price, options, isModal} = Astro.props;
 
 const pricePerMonthStyles: CSSProperties = {
     alignItems: price ? 'center' : 'flex-start'
@@ -19,7 +21,7 @@ const extraUsage: CSSProperties = {
 ---
 
 
-<article class="price_article">
+<article class:list={['price_article', {modal_price: isModal}]}>
     <div class="price_header">
         <h2>{title}</h2>
         <p>{info}</p>
