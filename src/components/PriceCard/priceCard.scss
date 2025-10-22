@@ -165,6 +165,23 @@
     max-width: 250px;
 }
 
+.modal_price {
+    height: 489px;
+
+    .price_header {
+        flex: 0 0 60px;
+    }
+
+    .price_container {
+        flex: 0 0 76px;
+    }
+
+    .price_per_month_container {
+        height: 100px;
+        justify-content: center;
+    }
+}
+
 @media (hover:hover) {
     .wide_button:hover {
         transform: scale(1.05);
@@ -174,6 +191,13 @@
 @media screen and (max-width: 870px) {
     .price_container {
         height: max-content;
+    }
+
+    .modal_price {
+        height: max-content !important;
+        .price_footer {
+            display: none;
+        }
     }
 }
 
