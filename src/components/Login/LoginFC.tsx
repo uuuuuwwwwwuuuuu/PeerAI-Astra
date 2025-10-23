@@ -17,7 +17,7 @@ const Login: FC<Props> = ({type}) => {
                     </div>
                     <div className="input_wrapper">
                         <label htmlFor="password">Password</label>
-                        <input type="email" id="password" placeholder="Enter your password" />
+                        <input type="password" id="password" placeholder="Enter your password" />
                     </div>
                     <span>Forgot password? <a href="#">Send reset code</a></span>
                     <button type="submit" className="wide_button" >{type === 'signup' ? 'Sign up' : 'Log in'}</button>

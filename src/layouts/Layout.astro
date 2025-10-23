@@ -62,21 +62,27 @@ class CalcModalManager {
 			this.open();
 		})
 
-		this.closeBtn.addEventListener('click', () => {
-			this.close();
-		})
+		if (this.closeBtn) {
+			this.closeBtn.addEventListener('click', () => {
+				this.close();
+			})
+		}
 	}
 
 	open() {	
-		this.modal.classList.remove('disable');
-		this.body.style.overflow = 'hidden';
-		this.blur.classList.remove('disable_blur');
+		if (this.modal && this.blur) {
+			this.modal.classList.remove('disable');
+			this.body.style.overflow = 'hidden';
+			this.blur.classList.remove('disable_blur');
+		}
 	}
 
 	close() {
-		this.modal.classList.add('disable');
-		this.body.style.overflow = 'auto';
-		this.blur.classList.add('disable_blur')
+		if (this.modal && this.blur) {
+			this.modal.classList.add('disable');
+			this.body.style.overflow = 'auto';
+			this.blur.classList.add('disable_blur')
+		}
 	}
 }
 document.addEventListener('DOMContentLoaded', () => {

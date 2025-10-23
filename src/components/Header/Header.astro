@@ -13,7 +13,9 @@ import styles from './Header.module.scss';
             <button class={styles.navBtn}>Github</button>
         </nav>
         <div class={styles.auth}>
-            <img src="/icons/person.svg" alt="person icon" class={styles.authIcon} />
+            <a href="/login">
+                <img src="/icons/person.svg" alt="person icon" class={styles.authIcon} />
+            </a>
             <div class={styles.authLinks}>
                 <a href="/login" class={styles.authLink}>Sign in</a>
                 <span class={styles.authSeparator}>/</span>
