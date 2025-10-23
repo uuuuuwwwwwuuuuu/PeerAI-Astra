@@ -1,0 +1,170 @@
+.form_container {
+    width: 100%;
+    padding: 0 10px;
+}
+
+.login_form {
+    width: 100%;
+    border: 1px solid var(--accent);
+    border-radius: 16px;
+    padding: 37px 33px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputs_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+
+
+    span {
+        font-family: Inter;
+        font-weight: 500;
+        font-size: 1.4rem;
+        line-height: 18.2px;
+        letter-spacing: -0.29px;
+        color: #0B100F80;
+
+        a {
+            display: inline;
+            font-family: DM Sans;
+            font-weight: 500;
+            font-size: 1.4rem;
+            line-height: 18.2px;
+            letter-spacing: -0.29px;
+            color: #096FFFB2;
+        }
+    }
+
+    button {
+        font-family: Figtree;
+        font-weight: 600;
+        font-size: 1.8rem;
+    }
+}
+
+.input_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+    
+    label {
+        font-family: Inter;
+        font-weight: 400;
+        font-size: 1.56rem;
+    }
+
+    input {
+        width: 100%;
+        height: 48px;
+        border-radius: 12px;
+        border: 1px solid #B1B1B1;
+        padding: 13px;
+
+        font-family: Inter;
+        font-weight: 400;
+        font-size: 1.56rem;
+
+        transition: 0.3s ease all;
+
+        &::placeholder {
+            color: #0B100F33;
+        }
+
+        &:focus {
+            border-color: var(--accent); 
+        }
+    }
+}
+
+.hr_wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 16px 0;
+    span {
+        font-family: Inter;
+        font-weight: 400;
+        font-size: 1.6rem;
+        flex: 0 0;
+        color: #0B100F80;
+    }
+
+    div {
+        height: 2px;
+        background-color: #0B100F80;
+        width: 100%;
+        opacity: 0.5;
+    }
+}
+
+.signup_social {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 32px;
+    width: 100%;
+    
+    button {
+        background-color: transparent;
+        border: 1px solid #0B100F33;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        font-family: Figtree;
+        font-weight: 600;
+        font-size: 1.6rem;
+
+        img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+.toggle_div {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    
+    span {
+        font-weight: 500;
+        font-size: 1.4rem;
+        font-family: Inter;
+        color: #0B100F80;
+    }
+
+    a {
+        font-family: Inter;
+        font-weight: 500;
+        font-size: 1.35rem;
+        color: var(--link);
+    }
+}
+
+.wide_button {
+    width: 100%;
+    height: 36px;
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 14px;
+    border-radius: 100px;
+    background-color: var(--accent);
+    color: var(--bg-main);
+    transition: 0.3s ease all;
+}
+
+@media screen and (max-width: 400px) {
+    .signup_social {
+        button {
+            font-size: 1.4rem;
+        }
+    }
+}

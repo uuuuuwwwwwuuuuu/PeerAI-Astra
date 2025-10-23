@@ -1,5 +1,7 @@
 ---
 import '../scss/layout.scss';
+
+import Header from '../components/Header/Header.astro';
 ---
 
 <!doctype html>
@@ -12,6 +14,7 @@ import '../scss/layout.scss';
 		<title>PeerAi</title>
 	</head>
 	<body>
+		<Header />
 		<slot />
 	</body>
 </html>
