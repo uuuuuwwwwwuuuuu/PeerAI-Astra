@@ -1,10 +1,7 @@
 ---
-import './pricesBlock.scss';
-import {priceData} from '../../assets/priceCards.ts';
+import { priceData } from '../../assets/data/priceCards.ts';
 
 import PriceCard from '../PriceCard/PriceCard.astro';
-
-
 ---
 
 <div class="prices">
@@ -12,7 +9,7 @@ import PriceCard from '../PriceCard/PriceCard.astro';
         <h3>Grow confidently with predictable pricing</h3>
         <div class="compare">
             <span class="compare_text">COMPARE</span>
-            <button class="compare_button">
+            <button class="compare_button" id="compare_button">
                 <img src=`/icons/calculator.svg` alt="calculator icon" />
                 <span>Calculator</span>
             </button>
@@ -20,79 +17,197 @@ import PriceCard from '../PriceCard/PriceCard.astro';
         <section class="price_cards_wrapper desktop">
             {
                 priceData.map(priceCard => {
-                    return <PriceCard 
-                        title={priceCard.title}
-                        info={priceCard.info}
-                        price={priceCard.price}
-                        options={priceCard.options}
-                    />
+                    return (
+                        <PriceCard
+                            title={priceCard.title}
+                            info={priceCard.info}
+                            price={priceCard.price}
+                            options={priceCard.options}
+                        />
+                    );
                 })
             }
         </section>
         <div class="price_slider">
             <div class="price_slider_window">
                 <section class="price_cards_wrapper">
-                    {priceData.map(priceCardData => {
-                        return (
-                            <PriceCard
-                                title={priceCardData.title}
-                                info={priceCardData.info}
-                                price={priceCardData.price}
-                                options={priceCardData.options}
-                            />
-                        );
-                    })}
+                    {
+                        priceData.map(priceCardData => {
+                            return (
+                                <PriceCard
+                                    title={priceCardData.title}
+                                    info={priceCardData.info}
+                                    price={priceCardData.price}
+                                    options={priceCardData.options}
+                                />
+                            );
+                        })
+                    }
                 </section>
             </div>
         </div>
     </div>
 </div>
 <script>
-import { priceData } from "../../assets/priceCards";
+    import { priceData } from '../../assets/data/priceCards';
 
-let startX = 0;
-let diffX = 0;
-let currentSlideIndex = 0;
+    let startX = 0;
+    let diffX = 0;
+    let currentSlideIndex = 0;
 
-const priceSlider: HTMLDivElement | null = document.querySelector('.price_slider');
-const priceWrapper = document.querySelectorAll('.price_cards_wrapper')[1] as HTMLDivElement | null;
-const compareButton = document.querySelector('.compare_button');
+    const priceSlider: HTMLDivElement | null = document.querySelector('.price_slider');
+    const priceWrapper = document.querySelectorAll(
+        '.price_cards_wrapper'
+    )[1] as HTMLDivElement | null;
+    const compareButton = document.querySelector('.compare_button');
 
-if (priceSlider && priceWrapper) {
-    priceSlider.addEventListener('touchstart', (event: TouchEvent) => {
-        startX = event.touches[0].clientX;
-    });
+    if (priceSlider && priceWrapper) {
+        priceSlider.addEventListener('touchstart', (event: TouchEvent) => {
+            startX = event.touches[0].clientX;
+        });
 
-    priceSlider.addEventListener('touchmove', (event: TouchEvent) => {
-        diffX = event.touches[0].clientX - startX;
-        const translateValue = currentSlideIndex * 350 - diffX
+        priceSlider.addEventListener('touchmove', (event: TouchEvent) => {
+            diffX = event.touches[0].clientX - startX;
+            const translateValue = currentSlideIndex * 350 - diffX;
 
-        priceWrapper.style.transform = `translate(${-translateValue}px)`;
-    });
+            priceWrapper.style.transform = `translate(${-translateValue}px)`;
+        });
 
-    priceSlider.addEventListener('touchend', (event: TouchEvent) => {
-        if (diffX <= -100) {
-            if (currentSlideIndex < priceData.length - 1) {
-                currentSlideIndex++;
+        priceSlider.addEventListener('touchend', (event: TouchEvent) => {
+            if (diffX <= -100) {
+                if (currentSlideIndex < priceData.length - 1) {
+                    currentSlideIndex++;
+                }
+
+                priceWrapper.style.transform = `translate(${currentSlideIndex * -350}px)`;
+            } else if (diffX >= 100) {
+                if (currentSlideIndex > 0) {
+                    currentSlideIndex--;
+                }
+
+                priceWrapper.style.transform = `translate(${currentSlideIndex * -350}px)`;
+            } else {
+                priceWrapper.style.transform = `translate(${currentSlideIndex * -350}px)`;
             }
+        });
+    }
 
-            priceWrapper.style.transform = `translate(${currentSlideIndex * -350}px)`;
-        } else if (diffX >= 100) {
-            if (currentSlideIndex > 0) {
-                currentSlideIndex--;
-            }
-            
-            priceWrapper.style.transform = `translate(${currentSlideIndex * -350}px)`;
-        } else {
-            priceWrapper.style.transform = `translate(${currentSlideIndex * -350}px)`;
-        }
-    })
-}
-
-if (compareButton) {
-    compareButton.addEventListener('click', () => {
-        document.dispatchEvent(new CustomEvent('open-modal'))
-    })
-}
-
+    if (compareButton) {
+        compareButton.addEventListener('click', () => {
+            document.dispatchEvent(new CustomEvent('open-modal'));
+        });
+    }
 </script>
+<style>
+    .prices {
+        width: 100%;
+        height: max-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--bg-second);
+
+        h3 {
+            font-family: Inter;
+            font-weight: 700;
+            font-size: 6.1rem;
+            text-align: center;
+            max-width: 652px;
+        }
+    }
+
+    @media screen and (max-width: 770px) {
+        .prices {
+            h3 {
+                font-size: 3.6rem;
+            }
+        }
+    }
+
+    .compare {
+        display: flex;
+        gap: 15px;
+        align-self: self-start;
+        height: 32px;
+        align-items: center;
+        margin-top: 20px;
+        margin-bottom: 38px;
+    }
+
+    .compare_text {
+        font-family: JetBrains Mono;
+        font-weight: 700;
+        font-size: 2rem;
+        line-height: 30px;
+        letter-spacing: -0.27px;
+        text-transform: uppercase;
+    }
+
+    .compare_button {
+        padding: 8px 13px;
+        display: flex;
+        gap: 6px;
+        border-radius: 6px;
+        border: 1px solid var(--accent);
+        align-items: center;
+        background-color: transparent;
+
+        span {
+            font-family: Inter;
+            font-weight: 500;
+            font-size: 1.2rem;
+            text-align: center;
+            text-transform: capitalize;
+        }
+
+        transition: 0.3s ease all;
+    }
+
+    .price_cards_wrapper {
+        display: flex;
+        transition: 0.15s ease all;
+    }
+
+    .price_slider {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .price_slider_window {
+        width: 300px;
+        overflow: hidden;
+    }
+
+    @media screen and (max-width: 1240px) {
+        .price_cards_wrapper {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 20px;
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 650px) {
+        .price_cards_wrapper {
+            display: flex;
+            gap: 50px;
+        }
+
+        .desktop {
+            display: none;
+        }
+
+        .price_slider {
+            display: flex;
+        }
+    }
+
+    @media (hover: hover) {
+        .compare_button:hover {
+            background-color: var(--accent);
+        }
+    }
+</style>

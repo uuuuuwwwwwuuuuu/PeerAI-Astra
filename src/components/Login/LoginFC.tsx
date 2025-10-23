@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import './login.scss'
+import './LoginFC.scss'
 
 
 interface Props {

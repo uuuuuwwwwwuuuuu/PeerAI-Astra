@@ -1,26 +1,169 @@
 ---
-import styles from './Header.module.scss';
 ---
 
-<header class={styles.header}>
-    <div class={styles.headerLine}>
-        <nav class={styles.nav}>
+<header class='header'>
+    <div class='header_line'>
+        <nav class='nav'>
             <a href="/">
-                <img src='/icons/peer_black.svg' alt="peer icon" class={styles.logo} />
+                <img src="/icons/peer_black.svg" alt="peer icon" class='logo' />
             </a>
-            <button class={styles.navBtn}>About</button>
-            <button class={styles.navBtn}>Discord</button>
-            <button class={styles.navBtn}>Github</button>
+            <button class='nav_btn'>About</button>
+            <button class='nav_btn'>Discord</button>
+            <button class='nav_btn'>Github</button>
         </nav>
-        <div class={styles.auth}>
+        <div class='auth'>
             <a href="/login">
-                <img src="/icons/person.svg" alt="person icon" class={styles.authIcon} />
+                <img src="/icons/person.svg" alt="person icon" class='auth_icon' />
             </a>
-            <div class={styles.authLinks}>
-                <a href="/login" class={styles.authLink}>Sign in</a>
-                <span class={styles.authSeparator}>/</span>
-                <a href="/signup" class={styles.authLink}>Sign up</a>
+            <div class='auth_links'>
+                <a href="/login" class='auth_link'>Sign in</a>
+                <span>/</span>
+                <a href="/signup" class='auth_link'>Sign up</a>
             </div>
         </div>
     </div>
 </header>
+<style>
+    .header {
+        width: 100%;
+        height: 76px;
+        background-color: var(--bg-second);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-bottom: 1px solid #eeeeee;
+    }
+
+    .header_line {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--bg-second);
+        padding: 24px;
+        width: 100%;
+    }
+
+    .nav {
+        display: flex;
+        gap: 16px;
+    }
+
+    .auth {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav_btn {
+        font-family: Inter;
+        font-weight: 400;
+        font-size: 2.4rem;
+        line-height: 100%;
+        transition: 0.3s ease all;
+        text-align: center;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0 16px;
+    }
+
+    .header_sign_in {
+        height: 100%;
+        max-width: max-content;
+        width: 100%;
+        display: flex;
+        gap: 16px;
+        align-items: center;
+    }
+
+    .auth_links {
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+
+        a {
+            transition: 0.3s ease all;
+        }
+        span {
+            font-size: 2.4rem;
+            font-weight: 400;
+            line-height: 100%;
+            margin: 0 5px;
+        }
+    }
+
+    .auth_link {
+        background-color: transparent;
+        font-weight: 400;
+        font-size: 2.4rem;
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+    }
+
+    .peer_wrapper {
+        span {
+            font-family: 'Figtree';
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+    }
+
+    .header_buttons_wrapper {
+        display: flex;
+        gap: 24px;
+    }
+
+    .logo,
+    .auth_icon {
+        transition: 0.3s ease all;
+        cursor: pointer;
+    }
+
+    @media (hover: hover) {
+        .nav_btn:hover {
+            color: var(--accent);
+        }
+
+        .logo:hover,
+        .auth_icon:hover {
+            transform: scale(1.1);
+        }
+
+        .auth_link:hover {
+            color: var(--accent);
+        }
+    }
+
+    @media screen and (max-width: 770px) {
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav_btn {
+            font-size: 1.8rem;
+            padding: 3px;
+        }
+
+        .header_sign_in {
+            gap: 10px;
+        }
+
+        .auth_icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .auth_links,
+        .auth_link {
+            font-size: 1.8rem;
+        }
+    }
+
+    @media screen and (max-width: 470px) {
+        .auth_links {
+            display: none;
+        }
+    }
+</style>
