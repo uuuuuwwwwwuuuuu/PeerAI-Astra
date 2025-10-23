@@ -106,14 +106,21 @@ import PriceCard from '../PriceCard/PriceCard.astro';
         flex-direction: column;
         align-items: center;
         background-color: var(--bg-second);
+        padding: 100px 0;
+    }
+    h3 {
+        font-family: Inter;
+        font-weight: 700;
+        font-size: 6.1rem;
+        text-align: center;
+        max-width: 652px;
+    }
 
-        h3 {
-            font-family: Inter;
-            font-weight: 700;
-            font-size: 6.1rem;
-            text-align: center;
-            max-width: 652px;
-        }
+    .main_container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 10px;
     }
 
     @media screen and (max-width: 770px) {
@@ -202,6 +209,14 @@ import PriceCard from '../PriceCard/PriceCard.astro';
 
         .price_slider {
             display: flex;
+        }
+
+        h3 {
+            max-width: 400px;
+        }
+
+        .prices {
+            padding: 50px 0;
         }
     }
 
