@@ -1,20 +1,63 @@
 ---
-import '../scss/loginPage.scss';
 
 import LoginFC from '../components/Login/LoginFC';
 import Layout from '../layouts/Layout.astro';
-
 ---
-<Layout >
+
+<Layout>
     <div class="signup_wrapper">
         <div class="signup_info_wrapper">
-            <div class='peer_wrapper'>
+            <div class="peer_wrapper">
                 <div class="peer_circle">
                     <img src=`/icons/peer_accent.svg` alt="peer accent color" />
                 </div>
-                <span style={{fontWeight: 400, fontSize: '2.6rem'}}>Sign up</span>
+                <span style={{ fontWeight: 400, fontSize: '2.6rem' }}>Sign up</span>
             </div>
-            <LoginFC type='signup' client:visible />
+            <LoginFC type="signup" client:visible />
         </div>
     </div>
 </Layout>
+<style>
+    .signup_wrapper {
+        width: 100%;
+        height: calc(100% - 76px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .signup_info_wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        max-width: 468px;
+        width: 100%;
+    }
+
+    .peer_wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        span {
+            font-family: Figtree;
+            font-weight: 700;
+            font-size: 2.8rem;
+        }
+    }
+
+    .peer_circle {
+        width: 75px;
+        height: 75px;
+        border: 1px solid var(--accent);
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            height: 35px;
+        }
+    }
+</style>
