@@ -9,6 +9,12 @@ import Header from '../components/Header/Header.astro';
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/icons/peer_accent.svg" />
         <meta name="generator" content={Astro.generator} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Manrope:wght@200..800&display=swap"
+            rel="stylesheet"
+        />
         <title>PeerAi</title>
     </head>
     <body>
@@ -18,10 +24,6 @@ import Header from '../components/Header/Header.astro';
 </html>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
     html,
     body {
         width: 100%;
@@ -41,27 +43,28 @@ import Header from '../components/Header/Header.astro';
         --text: #343433;
         --text-second: #727272;
         --link: #0072de;
+        --bg-dim-white: #FFFFFF1A;
+        --border-dim-white: #FFFFFF2A;
     }
 
     code {
         font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
     }
-
 </style>
 <style is:global>
-	button {
-		border: none;
+    button {
+        border: none;
         outline: none;
         cursor: pointer;
         background-color: transparent;
     }
 
-	* {
-		box-sizing: border-box;
-		color: var(--text);
-		margin: 0;
-		padding: 0;
-	}
+    * {
+        box-sizing: border-box;
+        color: var(--text);
+        margin: 0;
+        padding: 0;
+    }
 
     input {
         outline: none;
